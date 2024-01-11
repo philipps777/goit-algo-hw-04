@@ -52,7 +52,10 @@ def generate_random_array(size):
 
 def sort_time(sort_function, array_size):
     time_taken = timeit.timeit(
-        f"{sort_function.__name__}(generate_random_array({array_size}))", globals=globals(), number=100)
+        stmt=f"{sort_function.__name__}(data)",
+        setup=f"from __main__ import {sort_function.__name__}, generate_random_array; data = generate_random_array({array_size})",
+        number=100
+    )
     print(f"{sort_function.__name__} час ({array_size} елементів): {time_taken}")
 
 
@@ -74,15 +77,15 @@ if __name__ == "__main__":
     main()
 
 
-# merge_sort час (100 елементів): 0.038823267444968224
-# insert_sort час (100 елементів): 0.05112162325531244
-# timsort час (100 елементів): 0.00934724509716034
-# merge_sort час (500 елементів): 0.2577249053865671
-# insert_sort час (500 елементів): 1.1131594832986593
-# timsort час (500 елементів): 0.060403866693377495
-# merge_sort час (1000 елементів): 0.5121719883754849
-# insert_sort час (1000 елементів): 4.31552704051137
-# timsort час (1000 елементів): 0.11704112496227026
+# merge_sort час (100 елементів): 0.02481351885944605
+# insert_sort час (100 елементів): 0.0021056756377220154
+# timsort час (100 елементів): 0.002124213707447052
+# merge_sort час (500 елементів): 0.15167656354606152
+# insert_sort час (500 елементів): 0.017274742014706135
+# timsort час (500 елементів): 0.004080493003129959
+# merge_sort час (1000 елементів): 0.3357028588652611
+# insert_sort час (1000 елементів): 0.05815621744841337
+# timsort час (1000 елементів): 0.009730834513902664
 
 
 # merge_sort час (100 елементів): 0.032411737367510796
